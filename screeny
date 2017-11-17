@@ -1,0 +1,2 @@
+value=$(cat test) 
+echo $value | head -n 1
