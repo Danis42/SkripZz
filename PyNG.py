@@ -4,6 +4,13 @@ import threading
 import sys
 from subprocess import call
 
+#  to do 
+#  -Pyhton version controll
+#  -Game xD
+#  -Menu (start connect usw.)
+#  -dinge
+#  -sachen
+
 
 def start_client():
     call(["python2.7", "chat_client.py" , "localhost", "9009"])
