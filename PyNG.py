@@ -12,12 +12,14 @@ def start_server():
     call(["python2.7", "chat_server.py"])
 
 def find_python():
-	#assert sys.version_info>= (2,7)
 	#print( "your python version is") , sys.version_info
 
-
-	print("tut noch net")
-
+	if sys.version_info[0:2]== (2,7):
+		print("yeap version is ok")
+	else:
+		print(sys.version_info)
+		print("version 2.7 is needed")
+		sys.exit()
 
 def main():
    find_python()
