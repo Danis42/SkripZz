@@ -2,14 +2,16 @@ import argparse
 import os
 import threading
 import sys
+from multiprocessing import Process
 from subprocess import call
 
 
 def start_client():
-    call(["python2.7", "chat_client.py" , "localhost", "9009"])
+    print("uallalala")
+    call(["python2.7", os.getcwd()+"/chat_client.py" , "localhost", "9009"])
 
 def start_server():
-    call(["python2.7", "chat_server.py"])
+    call(["python2.7", os.getcwd()+"/chat_server.py"])
 
 def find_python():
 	#print( "your python version is") , sys.version_info
@@ -22,6 +24,7 @@ def find_python():
 		sys.exit()
 
 def main():
+   print(os.getcwd())
    find_python()
    parser = argparse.ArgumentParser(description=
             'Network games Server/Client',version="%prog 1.0")
@@ -45,12 +48,13 @@ def main():
       print( "List all the servers")
    elif args.connect:
       print( "connect to "), args.connect
-      #os.system("chat_server.py 1")
-      processThread = threading.Thread(target=start_server)  # <- note extra ','
+      processThread = threading.Thread(target=start_client)  # <- note extra ','
       processThread.start()
    elif args.start:
       print( "Start server")
-      os.system("chat_client.py 1")
+      processThread = threading.Thread(target=start_server)  # <- note extra ','
+      processThread.start()
+
    else:
       print( "wooops")
 
