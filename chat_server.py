@@ -44,8 +44,13 @@ def chat_server():
                     data = sock.recv(RECV_BUFFER)
                     if data:
                         # there is something in the socket
-                        broadcast(server_socket, sock, "\r" + '[' + str(sock.getpeername()) + '] ' + data)
-                    else:
+                    	if data=="!list\n" or data=="!List\n":
+				#sendList(server_socket, sock, ....)
+				print("this sends the User List
+			else:
+                        	broadcast(server_socket, sock, "\r" + '[' + str(sock.getpeername()) +'] ' + data)
+				print(data)
+		    else:
                         # remove the socket that's broken
                         if sock in SOCKET_LIST:
                             SOCKET_LIST.remove(sock)
